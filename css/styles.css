@@ -34,7 +34,7 @@ body{
     box-shadow: 0 0 1px rgba(0, 0, 0, 0);
     backface-visibility: hidden;
     -moz-osx-font-smoothing: grayscale;
-    transition-duration: 0.1s;
+    transition-duration: 0.3s;
     transition-property: transform;
 }
 
