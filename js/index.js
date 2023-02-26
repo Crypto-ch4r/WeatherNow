@@ -10,10 +10,10 @@ window.addEventListener('load', ()=>{
 
     let vientoVelocidad = document.getElementById('velocidad')
 
-    let sr = document.getElementById('puesta')
-    let ss = document.getElementById('salida')
+    let max = document.getElementById('maxTemp')
+    let min = document.getElementById('minTemp')
 
-    let feels = document.getElementById('salida')
+    let hum = document.getElementById('sensacion')
 
     if(navigator.geolocation){{
         navigator.geolocation.getCurrentPosition( posicion =>{
@@ -21,7 +21,7 @@ window.addEventListener('load', ()=>{
             lat = posicion.coords.latitude
 
             //Por ubicación actual
-            const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&lang=es&units=metric&appid=`
+            const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&lang=es&units=metric&appid=YOUR_API_KEY`
             
             //
             fetch(url)
@@ -37,9 +37,13 @@ window.addEventListener('load', ()=>{
 
                 vientoVelocidad.textContent = `${data.wind.speed} m/s`
 
-                sr = data.sunrise
+                let tempMax = Math.round(data.main.temp_max)
+                max.textContent = `${tempMax} °C`
 
-                ss = data.sunset
+                let tempMin = Math.round(data.main.temp_min)
+                min.textContent = `${tempMin} °C`
+
+                hum.textContent = `${data.main.humidity}%`
 
                 console.log(data)
 
